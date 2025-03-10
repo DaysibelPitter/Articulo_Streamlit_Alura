@@ -53,7 +53,7 @@ if checkbox_mostrar_tabla:
     else:
         mostrar_ctd_lineas(datos)
 
-# filtro para o gráfico
+# filtro para el gráfico
 st.sidebar.markdown('## Filtro para el gráfico')
 
 categoria_grafico = st.sidebar.selectbox('Seleccione la categoria para presentar en el gráfico', options = datos['Categoria'].unique())
