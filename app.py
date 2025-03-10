@@ -18,19 +18,24 @@ def mostrar_ctd_lineas(dataframe):
 
     st.write(dataframe.head(ctd_lineas).style.format(subset = ['Valor'], formatter="{:.2f}"))
 
-# função que cria o gráfico
+# Función que crea el gráfico
 def plot_estoque(dataframe, categoria):
 
     datos_plot = dataframe.query('Categoria == @categoria')
 
-    fig, ax = plt.subplots(figsize=(8,6))
-    ax = sns.barplot(x = 'Producto', y = 'Cantidad', data = datos_plot)
-    ax.set_title(f'Cantidad en stock de los productos de {categoria}', fontsize = 16)
-    ax.set_xlabel('Productos', fontsize = 12)
-    ax.tick_params(rotation = 20, axis = 'x')
-    ax.set_ylabel('Cantidad', fontsize = 12)
+    # Generar una paleta de colores automáticamente
+    palette = sns.color_palette("coolwarm", len(datos_plot))
+
+    # Crear el gráfico
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax = sns.barplot(x='Producto', y='Cantidad', data=datos_plot, palette=palette)
+    ax.set_title(f'Cantidad en stock de los productos de {categoria}', fontsize=16)
+    ax.set_xlabel('Productos', fontsize=12)
+    ax.tick_params(rotation=20, axis='x')  # Rotar los nombres de los productos
+    ax.set_ylabel('Cantidad', fontsize=12)
   
     return fig
+
 
 checkbox_mostrar_tabla = st.sidebar.checkbox('Mostrar tabla')
 if checkbox_mostrar_tabla:
