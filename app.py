@@ -8,7 +8,7 @@ st.title('Mi primera aplicacion ')
 # importando los datos
 datos = pd.read_csv('stock.csv')
 
-st.title('Analisis de estock\n')
+st.title('Analisis de stock\n')
 st.write('En este proyecto vamos a analisar la cantidad de produtos en stock, por categoria, de una base de datos de produtos de supermercado')
 
 # función para seleccionar la cantidad de lineas del dataframe
