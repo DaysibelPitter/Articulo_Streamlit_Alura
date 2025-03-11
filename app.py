@@ -6,20 +6,20 @@ import streamlit as st
 
 st.title('Mi primera aplicacion ')
 # importando los datos
-datos = pd.read_csv('estoque.csv')
+datos = pd.read_csv('stock.csv')
 
-st.title('Analisis de estoque\n')
-st.write('En este proyecto vamos a analisar la cantidad de produtos en estoque, por categoria, de una base de datos de produtos de supermercado')
+st.title('Analisis de estock\n')
+st.write('En este proyecto vamos a analisar la cantidad de produtos en stock, por categoria, de una base de datos de produtos de supermercado')
 
 # función para seleccionar la cantidad de lineas del dataframe
 def mostrar_ctd_lineas(dataframe):
 
-    ctd_lineas = st.sidebar.slider('Seleccione la cantidad de lineas que desea mostrar en la tabela', min_value = 1, max_value = len(dataframe), step = 1)
+    ctd_lineas = st.sidebar.slider('Seleccione la cantidad de lineas que desea mostrar en la tabla', min_value = 1, max_value = len(dataframe), step = 1)
 
     st.write(dataframe.head(ctd_lineas).style.format(subset = ['Valor'], formatter="{:.2f}"))
 
 # Función que crea el gráfico
-def plot_estoque(dataframe, categoria):
+def plot_stock(dataframe, categoria):
 
     datos_plot = dataframe.query('Categoria == @categoria')
 
@@ -57,5 +57,5 @@ if checkbox_mostrar_tabla:
 st.sidebar.markdown('## Filtro para el gráfico')
 
 categoria_grafico = st.sidebar.selectbox('Seleccione la categoria para presentar en el gráfico', options = datos['Categoria'].unique())
-figura = plot_estoque(datos, categoria_grafico)
+figura = plot_stock(datos, categoria_grafico)
 st.pyplot(figura)
